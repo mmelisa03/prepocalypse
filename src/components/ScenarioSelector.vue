@@ -8,7 +8,7 @@
         @click="selectScenario(key)"
         style="cursor: pointer; margin: 10px 0"
       >
-        {{ scenario.name }}
+       {{ scenario.emoji }} {{ scenario.name }}
       </li>
     </ul>
 
@@ -92,7 +92,7 @@ li:hover {
 
 button {
   font-family: 'Creepster', cursive;
-  font-size: 1,2rem;
+  font-size: 1.2rem;
   padding: 8px 20px;
   border-radius: 8px;
   background: #c0392b;
