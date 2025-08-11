@@ -1,6 +1,9 @@
 <template>
   <div>
     <h2>Select your Apocalypse Scenario</h2>
+     <button @click="randomScenario" style="margin-bottom: 20px;">
+      Pick a Random Scenario
+    </button>
     <ul>
       <li
         v-for="(scenario, key) in scenarios"
@@ -8,18 +11,19 @@
         @click="selectScenario(key)"
         style="cursor: pointer; margin: 10px 0"
       >
-       {{ scenario.emoji }} {{ scenario.name }}
+        {{ scenario.emoji }} {{ scenario.name }}
       </li>
     </ul>
 
     <div v-if="selectedScenario">
       <h3>Checklist for {{ selectedScenario.name }}</h3>
+      <p>{{ selectedScenario.description }}</p>
       <ul>
         <li v-for="item in selectedScenario.items" :key="item.id">
           {{ item.emoji }} {{ item.name }}
         </li>
       </ul>
-      <button @click="goBack" style="margin-top: 20px;">Back</button>
+      <button @click="goBack" style="margin-top: 20px">Back</button>
     </div>
   </div>
 </template>
@@ -47,7 +51,12 @@ export default {
     goBack() {
       this.selectedScenarioKey = null
     },
+  randomScenario() {
+    const keys = Object.keys(this.scenarios)
+    const randomKey = keys[Math.floor(Math.random() * keys.length)]
+    this.selectScenario(randomKey)
   },
+}
 }
 </script>
 
@@ -64,6 +73,13 @@ h3 {
   color: #27ae60;
   font-size: 1.2rem;
   text-align: center;
+}
+
+p {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: #7f8c8d;
 }
 
 ul {
