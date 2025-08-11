@@ -79,7 +79,7 @@ p {
   text-align: center;
   font-style: italic;
   margin-bottom: 20px;
-  color: #7f8c8d;
+  color: red;
 }
 
 ul {
