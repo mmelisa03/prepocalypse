@@ -1,12 +1,20 @@
 <template>
   <div>
     <h2>Select your Apocalypse Scenario</h2>
+
+     <input
+      type="text"
+      v-model="searchFilter"
+      placeholder="Search scenarios..."
+      style="margin-bottom: 20px; padding: 8px; width: 100%"
+    />
+
      <button @click="randomScenario" style="margin-bottom: 20px;">
       Pick a Random Scenario
     </button>
     <ul>
       <li
-        v-for="(scenario, key) in scenarios"
+        v-for="(scenario, key) in filteredScenarios"
         :key="key"
         @click="selectScenario(key)"
         style="cursor: pointer; margin: 10px 0"
@@ -25,6 +33,7 @@
       </ul>
       <button @click="goBack" style="margin-top: 20px">Back</button>
     </div>
+
   </div>
 </template>
 
@@ -36,14 +45,30 @@ export default {
   data() {
     return {
       scenarios,
-      selectedScenarioKey: null, // <-- use this name
+      selectedScenarioKey: null,
+      searchFilter: '', // <-- use this name
     }
   },
   computed: {
     selectedScenario() {
-      return this.selectedScenarioKey ? this.scenarios[this.selectedScenarioKey] : null
+      return this.selectedScenarioKey
+      ? this.scenarios[this.selectedScenarioKey]
+       : null
+    },
+
+  filteredScenarios() {
+      const filter = this.searchFilter.toLowerCase()
+      return Object.fromEntries(
+        Object.entries(this.scenarios).filter(([key, scenario]) =>
+          scenario.name.toLowerCase().includes(filter)
+        )
+      )
     },
   },
+
+
+
+
   methods: {
     selectScenario(key) {
       this.selectedScenarioKey = key // <-- use this name
@@ -55,7 +80,7 @@ export default {
     const keys = Object.keys(this.scenarios)
     const randomKey = keys[Math.floor(Math.random() * keys.length)]
     this.selectScenario(randomKey)
-  },
+  }
 }
 }
 </script>
