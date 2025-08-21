@@ -17,12 +17,19 @@
         v-for="(scenario, key) in filteredScenarios"
         :key="key"
         @click="selectScenario(key)"
+        :class="{ 'selected-scenario': key === selectedScenarioKey }"
         style="cursor: pointer; margin: 10px 0"
       >
         {{ scenario.emoji }} {{ scenario.name }}
       </li>
     </ul>
 
+
+      <div v-if="!selectedScenario" style="text-align: center; margin-top: 20px;">
+        <p>Select a scenario to see the checklist.</p>
+      </div>
+
+    <transition name="fade">
     <div v-if="selectedScenario">
       <h3>Checklist for {{ selectedScenario.name }}</h3>
       <p>{{ selectedScenario.description }}</p>
@@ -33,6 +40,7 @@
       </ul>
       <button @click="goBack" style="margin-top: 20px">Back</button>
     </div>
+    </transition>
 
   </div>
 </template>
@@ -147,4 +155,18 @@ button {
 button:hover {
   background: #27ae60;
 }
+.selected-scenario {
+  background-color: #e67e22;
+  transform: scale(1.05);
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 2s;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
+}
+
 </style>
