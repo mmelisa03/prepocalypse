@@ -11,6 +11,7 @@ export const scenarios = {
       { id: 4, name: 'Mr. Darcy novel', emoji: '📖' },
       { id: 5, name: 'Hand sanitizer', emoji: '🧴' },
     ],
+    ratings: []
   },
 
   ai: {
@@ -25,6 +26,7 @@ export const scenarios = {
       { id: 4, name: 'Pet dog', emoji: '🐶' },
       { id: 5, name: 'Signal jammer', emoji: '📡' },
     ],
+    ratings: []
   },
 
   meteor: {
@@ -37,6 +39,7 @@ export const scenarios = {
       { id: 4, name: 'Portable charger', emoji: '🔋' },
       { id: 5, name: 'Cosmic dust mask', emoji: '😷' },
     ],
+    ratings: []
   },
 
   videoGameGlitch: {
@@ -49,6 +52,7 @@ export const scenarios = {
       { id: 4, name: 'Snack pack', emoji: '🍿' },
       { id: 5, name: 'Cheat code manual', emoji: '📖' },
     ],
+    ratings: []
   },
 
   volcano: {
@@ -61,6 +65,7 @@ export const scenarios = {
       { id: 4, name: 'Water', emoji: '💧' },
       { id: 5, name: 'Emergency marshamallow stash', emoji: '🍡' },
     ],
+    ratings: []
   },
 
   aliens: {
@@ -73,6 +78,7 @@ export const scenarios = {
       { id: 4, name: 'Alien translator', emoji: '🛸' },
       { id: 5, name: 'Universal remote (for UFOS)', emoji: '📺' },
     ],
+    ratings: []
   },
 
   memes: {
@@ -85,5 +91,6 @@ export const scenarios = {
       { id: 4, name: 'Coffee', emoji: '☕' },
       { id: 5, name: 'Cat video stash', emoji: '🐱' },
     ],
+    ratings: []
   },
 }
